@@ -1,5 +1,3 @@
-package net.xuele;
-
 import net.xuele.register.scan.ScanTest;
 import net.xuele.register.service.MyService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

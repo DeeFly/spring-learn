@@ -1,4 +1,6 @@
-import net.xuele.initialize.service.MyService;
+import net.xuele.initialize.service.ServiceAnnotation;
+import net.xuele.initialize.service.ServiceMixed;
+import net.xuele.initialize.service.ServiceXML;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -6,9 +8,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  */
 public class Main {
-    public static void main( String[] args ) {
+    public static void main(String[] args ) {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring/application-context.xml");
-        MyService myService = (MyService)applicationContext.getBean("myService");
-        myService.printString("test");
+        ServiceXML myService = (ServiceXML)applicationContext.getBean("serviceXML");
+        myService.call();
+        ServiceMixed serviceMixed = (ServiceMixed)applicationContext.getBean("serviceMixed");
+        serviceMixed.call();
+        ServiceAnnotation serviceAnnotation = (ServiceAnnotation)applicationContext.getBean("serviceAnnotation");
+        serviceAnnotation.call();
     }
 }
