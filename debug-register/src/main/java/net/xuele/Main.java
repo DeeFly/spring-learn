@@ -1,6 +1,7 @@
 package net.xuele;
 
-import net.xuele.service.MyService;
+import net.xuele.register.scan.ScanTest;
+import net.xuele.register.service.MyService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -12,5 +13,8 @@ public class Main {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring/application-context.xml");
         MyService myService = (MyService)applicationContext.getBean("myService");
         myService.printString("test");
+
+        ScanTest scanTest = (ScanTest)applicationContext.getBean("scanTest");
+        scanTest.print("test");
     }
 }
