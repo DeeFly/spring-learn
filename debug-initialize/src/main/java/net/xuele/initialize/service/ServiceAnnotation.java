@@ -14,15 +14,16 @@ import javax.annotation.PreDestroy;
  */
 @Service
 public class ServiceAnnotation {
-    @Autowired
     private ServiceMixed serviceMixed;
+    @Autowired
     private ServiceXML serviceXML;
     @Value("${integer}")
     private Integer integer;
     private final Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
-    public ServiceAnnotation(ServiceXML serviceXML) {
-        this.serviceXML = serviceXML;
+    public ServiceAnnotation(ServiceMixed serviceMixed) {
+        this.serviceMixed = serviceMixed;
     }
 
     public int getNum(int i) {

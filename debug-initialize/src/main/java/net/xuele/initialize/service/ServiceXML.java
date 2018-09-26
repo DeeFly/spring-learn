@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 public class ServiceXML {
     private ServiceAnnotation serviceAnnotation;
     private ServiceMixed serviceMixed;
+    private Integer integer;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public int getNum(int i) {
@@ -18,6 +19,7 @@ public class ServiceXML {
     public void call() {
         logger.info("getNum 3:{}", serviceAnnotation.getNum(3));
         logger.info("getNum 3:{}", serviceMixed.getNum(3));
+        logger.info("integer :{} ", integer);
     }
 
     public void myInitMethod() {
@@ -42,5 +44,13 @@ public class ServiceXML {
 
     public void setServiceAnnotation(ServiceAnnotation serviceAnnotation) {
         this.serviceAnnotation = serviceAnnotation;
+    }
+
+    public Integer getInteger() {
+        return integer;
+    }
+
+    public void setInteger(Integer integer) {
+        this.integer = integer;
     }
 }
