@@ -15,9 +15,6 @@
         <property name="serviceMixed" ref="serviceMixed"/>
     </bean>
 
-    <bean class="net.xuele.initialize.service.ServiceMixed" id="serviceMixed">
-        <property name="serviceXML" ref="serviceXML"/>
-    </bean>
 
     <context:component-scan base-package="net.xuele.initialize.service"></context:component-scan>
 

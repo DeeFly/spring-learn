@@ -15,4 +15,12 @@ public class MyService {
     public int getNum(int i) {
         return i;
     }
+
+    public int selectNum(int i) {
+        return i;
+    }
+
+    public int other(int i) {
+        return i;
+    }
 }

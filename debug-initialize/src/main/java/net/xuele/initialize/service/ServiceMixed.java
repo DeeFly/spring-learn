@@ -2,15 +2,13 @@ package net.xuele.initialize.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by GaoQingming on 2018/9/25.
  */
+@Service
 public class ServiceMixed {
-    @Autowired
-    private ServiceAnnotation serviceAnnotation;
-    private ServiceXML serviceXML;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public int getNum(int i) {
@@ -18,15 +16,7 @@ public class ServiceMixed {
     }
 
     public void call() {
-        logger.info("getNum 3:{}", serviceAnnotation.getNum(3));
-        logger.info("getNum 3:{}", serviceXML.getNum(3));
+        logger.info("invoked");
     }
 
-    public ServiceXML getServiceXML() {
-        return serviceXML;
-    }
-
-    public void setServiceXML(ServiceXML serviceXML) {
-        this.serviceXML = serviceXML;
-    }
 }

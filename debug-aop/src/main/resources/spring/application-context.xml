@@ -15,7 +15,7 @@
     <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
 
     <aop:config>
-        <aop:pointcut expression="execution(* net.xuele.debugAop.service..*(..))"
+        <aop:pointcut expression="execution(* net.xuele.debugAop.service..select*(..))"
                       id="servicePointcut"/>
         <aop:aspect id="logAspect" ref="myAopTestXML">
             <aop:around method="handleAop"  pointcut-ref="servicePointcut" />

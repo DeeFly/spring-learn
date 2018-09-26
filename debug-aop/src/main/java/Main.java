@@ -8,7 +8,16 @@ public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring/application-context.xml");
         MyService myService = (MyService)applicationContext.getBean("myService");
+        System.out.println("getNum begin=====================================================");
         int i = myService.getNum(1);
         System.out.println(i);
+
+        System.out.println("selectNum begin=====================================================");
+        int j = myService.selectNum(2);
+        System.out.println(j);
+
+        System.out.println("other no aop begin=====================================================");
+        int k = myService.other(3);
+        System.out.println(k);
     }
 }
