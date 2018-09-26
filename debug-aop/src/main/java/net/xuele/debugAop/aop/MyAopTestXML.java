@@ -1,4 +1,4 @@
-package net.xuele.initialize.aop;
+package net.xuele.debugAop.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;

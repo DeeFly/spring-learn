@@ -20,6 +20,10 @@ public class ServiceXML {
         logger.info("getNum 3:{}", serviceMixed.getNum(3));
     }
 
+    public void myInitMethod() {
+        logger.info("xml configuration init method invoked");
+    }
+
     public void printString(String s) {
         System.out.println(s);
     }

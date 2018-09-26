@@ -1,4 +1,4 @@
-package net.xuele.initialize.aop;
+package net.xuele.debugAop.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 public class MyAopTest {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("execution(* net.xuele.initialize.service..*(..))")
+    @Pointcut("execution(* net.xuele.debugAop.service..*(..))")
     public void pointCut(){}
 
     /**

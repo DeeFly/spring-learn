@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * Created by GaoQingming on 2018/9/25.
  */
@@ -30,6 +33,16 @@ public class ServiceAnnotation {
         logger.info("getNum 3:{}", serviceMixed.getNum(3));
         logger.info("getNum 3:{}", serviceXML.getNum(3));
         logger.info("@Value integer:{}", integer);
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        logger.info("preDestroy invoked========================================");
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        logger.info("postConstruct invoked=====================================");
     }
 
 }

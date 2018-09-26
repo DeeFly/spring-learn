@@ -10,16 +10,18 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean class="net.xuele.initialize.service.ServiceXML" id="serviceXML" init-method="myInitMethod" autowire="byName">
-        <property name="serviceAnnotation" ref="serviceAnnotation"/>
-        <property name="serviceMixed" ref="serviceMixed"/>
-    </bean>
+    <context:component-scan base-package="net.xuele.debugAop"></context:component-scan>
 
-    <bean class="net.xuele.initialize.service.ServiceMixed" id="serviceMixed">
-        <property name="serviceXML" ref="serviceXML"/>
-    </bean>
+    <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
 
-    <context:component-scan base-package="net.xuele.initialize.service"></context:component-scan>
+    <aop:config>
+        <aop:pointcut expression="execution(* net.xuele.debugAop.service..*(..))"
+                      id="servicePointcut"/>
+        <aop:aspect id="logAspect" ref="myAopTestXML">
+            <aop:around method="handleAop"  pointcut-ref="servicePointcut" />
+        </aop:aspect>
+    </aop:config>
 
-    <context:property-placeholder location="classpath*:properties/db.properties,classpath*:properties/value.properties"/>
+    <bean id="myAopTestXML" class="net.xuele.debugAop.aop.MyAopTestXML"/>
+
 </beans>

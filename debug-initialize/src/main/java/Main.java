@@ -16,5 +16,6 @@ public class Main {
         serviceMixed.call();
         ServiceAnnotation serviceAnnotation = (ServiceAnnotation)applicationContext.getBean("serviceAnnotation");
         serviceAnnotation.call();
+        applicationContext.destroy();
     }
 }
