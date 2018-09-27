@@ -23,7 +23,13 @@ public class ServiceXML {
     }
 
     public void myInitMethod() {
+        logger.info("circular reference serviceAnnotation : {} ===================这个没问题，虽然A此时没有依赖注入结束，但是这个方法没有用到A的依赖========", serviceAnnotation.getNum(2));
         logger.info("xml configuration init method invoked");
+
+        // 循环依赖测试，A -> B  ，B -> A   先初始化A，依赖注入时触发B的初始化、实例化，
+        // 在B中调用A中的无需依赖的或者已经注入的属性的方法没问题，
+        // 但是B中调用A中未完成依赖注入的方法时就会报空指针异常了
+        //serviceAnnotation.call();
     }
 
     public void printString(String s) {

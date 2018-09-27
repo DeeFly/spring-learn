@@ -19,6 +19,7 @@ public class ServiceAnnotation {
     private ServiceXML serviceXML;
     @Value("${integer}")
     private Integer integer;
+    private Integer integerXML;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -46,4 +47,11 @@ public class ServiceAnnotation {
         logger.info("postConstruct invoked=====================================");
     }
 
+    public Integer getIntegerXML() {
+        return integerXML;
+    }
+
+    public void setIntegerXML(Integer integerXML) {
+        this.integerXML = integerXML;
+    }
 }
