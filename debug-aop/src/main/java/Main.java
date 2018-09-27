@@ -19,5 +19,7 @@ public class Main {
         System.out.println("other no aop begin=====================================================");
         int k = myService.other(3);
         System.out.println(k);
+
+        System.out.println("ExposeInvocationInterceptor.ADVISOR 重写了toString方法？ " + myService.toString());
     }
 }

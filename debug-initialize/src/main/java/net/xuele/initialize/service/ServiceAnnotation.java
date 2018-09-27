@@ -35,6 +35,7 @@ public class ServiceAnnotation {
         logger.info("getNum 3:{}", serviceMixed.getNum(3));
         logger.info("getNum 3:{}", serviceXML.getNum(3));
         logger.info("@Value integer:{}", integer);
+        logger.info("value XML :{}", integerXML);
     }
 
     @PreDestroy

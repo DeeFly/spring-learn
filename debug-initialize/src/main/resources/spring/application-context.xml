@@ -12,7 +12,7 @@
 
     <context:component-scan base-package="net.xuele.initialize.service"></context:component-scan>
 
-    <bean class="net.xuele.initialize.service.ServiceAnnotation" >
+    <bean class="net.xuele.initialize.service.ServiceAnnotation" id="serviceAnnotation">
         <property name="integerXML" value="${integer}"/>
     </bean>
     <context:property-placeholder location="classpath*:properties/db.properties,classpath*:properties/value.properties"/>
@@ -20,6 +20,10 @@
     <bean class="net.xuele.initialize.service.ServiceXML" id="serviceXML" init-method="myInitMethod" autowire="byName">
         <property name="serviceAnnotation" ref="serviceAnnotation"/>
         <property name="serviceMixed" ref="serviceMixed"/>
+        <property name="integer" value="${integer}"/>
+    </bean>
+
+    <bean class="net.xuele.initialize.service.ServicePrototype" id="servicePrototype" scope="prototype">
         <property name="integer" value="${integer}"/>
     </bean>
 </beans>
