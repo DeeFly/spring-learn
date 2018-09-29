@@ -24,6 +24,7 @@
                 <entry key="key3" value="value3"/>
             </map>
         </constructor-arg>
+        <property name="property" value="propertyValue"/>
     </bean>
 
     <context:component-scan base-package="net.xuele.register.scan">

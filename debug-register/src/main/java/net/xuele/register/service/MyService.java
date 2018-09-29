@@ -12,6 +12,8 @@ import java.util.Map;
 public class MyService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    private String property;
+
     public MyService(String string, Integer integer, List<String> list, Map<String,String> map) {
         logger.info("string:{}", string);
         logger.info("integer:{}", integer);
@@ -20,5 +22,13 @@ public class MyService {
     }
     public void printString(String s) {
         logger.info("print:{} ====================================================", s);
+    }
+
+    public String getProperty() {
+        return property;
+    }
+
+    public void setProperty(String property) {
+        this.property = property;
     }
 }
