@@ -1,5 +1,6 @@
 package net.xuele.debugAop.service;
 
+import net.xuele.debugAop.param.AParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.AopContext;
@@ -13,11 +14,12 @@ import org.springframework.stereotype.Service;
 public class MyService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public int getNum(int i) {
-        return i;
+    public int getNum(AParam param) {
+        logger.info("param : {} ", param.getS());
+        return 1;
     }
 
-    public int selectNum(int i) {
+    public int selectNum(Integer i) {
         return i;
     }
 

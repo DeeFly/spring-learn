@@ -1,3 +1,4 @@
+import net.xuele.debugAop.param.AParam;
 import net.xuele.debugAop.service.MyService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,7 +10,7 @@ public class Main {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring/application-context.xml");
         MyService myService = (MyService)applicationContext.getBean("myService");
         System.out.println("getNum begin=====================================================");
-        int i = myService.getNum(1);
+        int i = myService.getNum(new AParam("ssss"));
         System.out.println(i);
 
         System.out.println("selectNum begin=====================================================");

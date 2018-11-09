@@ -1,5 +1,6 @@
 package net.xuele.debugAop.aop;
 
+import net.xuele.debugAop.param.AParam;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -18,8 +19,15 @@ import java.lang.reflect.Method;
 public class MyAopTest {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("execution(* net.xuele.debugAop.service..get*(..))")
+    @Pointcut("execution(* net.xuele.debugAop.service..get*(..)) && @within(org.springframework.stereotype.Service)")
     public void pointCut(){}
+
+    @Pointcut("pointCut() && args(aParam)")
+    public void pointCutWithParam(AParam aParam){}
+
+
+    @Pointcut("execution(* net.xuele.debugAop.service..select*(..))")
+    public void selectPointCut(){}
 
     /**
      *
@@ -39,9 +47,17 @@ public class MyAopTest {
         return object;
     }
 
-    @Before(value = "pointCut()")
-    public Object beforeInvoke(JoinPoint point) throws Throwable {
+    @Before(value = "pointCutWithParam(param)")
+    public Object beforeInvoke(JoinPoint point, AParam param) throws Throwable {
         logger.info("myAOPTest come before invoke");
+        logger.info("args==============================={}", param.getS());
+        return null;
+    }
+
+    @Before(value = "selectPointCut() && args(in)")
+    public Object beforeSelectInvoke(JoinPoint point, Integer in) throws Throwable {
+        logger.info("myAOPTest come before invoke");
+        logger.info("select args==============================={}", in);
         return null;
     }
 
