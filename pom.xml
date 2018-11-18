@@ -12,6 +12,7 @@
         <module>debug-aop</module>
         <module>debug-register</module>
         <module>debug-initialize</module>
+        <module>debug-springMVC</module>
     </modules>
 
     <dependencyManagement>
