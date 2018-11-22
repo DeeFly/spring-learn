@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * Created by GaoQingming on 2018/9/26 0026.
  */
 @Service
-public class MyService {
+public class MyService  implements net.xuele.debugAop.service.Service{
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     public int getNum(AParam param) {
