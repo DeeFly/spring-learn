@@ -12,7 +12,8 @@
 
     <context:component-scan base-package="net.xuele.debugAop"></context:component-scan>
 
-    <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true"/>
+    <!--如果不适用proxy-target-class="true" 那么就不能使用类接受实现了接口的动态代理类。-->
+    <aop:aspectj-autoproxy expose-proxy="true" proxy-target-class="true" />
 
     <aop:config>
         <aop:pointcut expression="execution(* net.xuele.debugAop.service..select*(..))"

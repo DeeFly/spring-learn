@@ -1,5 +1,6 @@
 import net.xuele.debugAop.param.AParam;
-import net.xuele.debugAop.service.MyService;
+import net.xuele.debugAop.service.SecondService;
+import net.xuele.debugAop.service.Service;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -8,7 +9,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("/spring/application-context.xml");
-        MyService myService = (MyService)applicationContext.getBean("myService");
+
+        SecondService secondService = (SecondService)applicationContext.getBean("secondService");
+        System.out.println("getNum begin aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        secondService.invoke();
+
+
+        Service myService = (Service)applicationContext.getBean("myService");
         System.out.println("getNum begin=====================================================");
         int i = myService.getNum(new AParam("ssss"));
         System.out.println(i);
@@ -18,8 +25,8 @@ public class Main {
         System.out.println(j);
 
         System.out.println("other no aop begin=====================================================");
-        int k = myService.other(3);
-        System.out.println(k);
+        //int k = myService.other(3);
+        //System.out.println(k);
 
         System.out.println("ExposeInvocationInterceptor.ADVISOR 重写了toString方法？ " + myService.toString());
     }
