@@ -2,6 +2,7 @@ package info.gaofei.springMVC.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("default")
-public class DefaultController {
+public class DefaultController implements InitializingBean {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @RequestMapping("mapping")
@@ -22,5 +23,10 @@ public class DefaultController {
     public String mapping(HttpServletRequest request, ModelMap map, String param) {
         logger.info(param);
         return "result";
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        logger.info("my web initializing =============================================");
     }
 }

@@ -4,12 +4,9 @@ import net.xuele.debugAop.param.AParam;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
-import java.lang.reflect.Method;
 
 /**
  * Created by GaoQingming on 2017/9/8 0008.
@@ -39,12 +36,19 @@ public class MyAopTest {
     @Around(value = "pointCut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         logger.info("myAOPTest around come");
-        Object object = joinPoint.proceed(joinPoint.getArgs());
-        MethodSignature signature = (MethodSignature)joinPoint.getSignature();
-        Method method = signature.getMethod();
-        if (object == null) return object;
-        logger.info("myAOPTest around end");
-        return object;
+        Object object = null;
+        try {
+            return joinPoint.proceed();
+        } catch (Exception e) {
+            logger.error("{}({}) 执行异常: ", parseFullMethodName(joinPoint), parseArgument(joinPoint), e);
+            throw e;
+        }
+
+        //MethodSignature signature = (MethodSignature)joinPoint.getSignature();
+        //Method method = signature.getMethod();
+        //if (object == null) return object;
+        //logger.info("myAOPTest around end");
+        //return object;
     }
 
     @Before(value = "pointCutWithParam(param)")
@@ -71,5 +75,25 @@ public class MyAopTest {
     public Object afterReturning(JoinPoint point, Object returnValue) throws Throwable {
         logger.info("myAOPTest come afterReturning invoke");
         return returnValue;
+    }
+
+    private String parseFullMethodName(ProceedingJoinPoint joinPoint) {
+        return joinPoint.getTarget().getClass().toString() + "." + joinPoint.getSignature().getName();
+    }
+
+    private String parseArgument(ProceedingJoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        if (args == null || args.length == 0)
+            return "";
+
+        if (args.length == 1)
+            return String.valueOf(args[0]);
+
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < args.length - 1; i++) {
+            result.append(args[i]).append(", ");
+        }
+        result.append(args[args.length - 1]);
+        return result.toString();
     }
 }

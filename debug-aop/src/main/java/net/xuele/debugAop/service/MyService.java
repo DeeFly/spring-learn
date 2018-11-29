@@ -16,10 +16,23 @@ public class MyService  implements net.xuele.debugAop.service.Service{
 
     public int getNum(AParam param) {
         logger.info("param : {} ", param.getS());
+        try {
+            selectNum(2);
+        } catch (Throwable throwable) {
+            //如果只用一个参数throwable.getStackTrace() 这时候只会打印出一行堆栈信息，
+            //如果有多个参数，就能打印出完整堆栈信息
+            logger.error("throwable :{},:{}",throwable.getMessage(), throwable.getStackTrace());
+        }
+
+        selectNum(2);
+
         return 1;
     }
 
     public int selectNum(Integer i) {
+        //int j = 10 /0;
+        String s = null;
+        s.getBytes();
         return i;
     }
 

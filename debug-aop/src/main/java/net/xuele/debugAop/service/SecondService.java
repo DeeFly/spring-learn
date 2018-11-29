@@ -12,6 +12,6 @@ public class SecondService {
     private net.xuele.debugAop.service.Service myService;
 
     public void invoke() {
-        System.out.println(myService.selectNum(2));
+        //System.out.println(myService.selectNum(2));
     }
 }

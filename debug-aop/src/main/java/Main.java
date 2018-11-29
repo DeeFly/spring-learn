@@ -21,8 +21,8 @@ public class Main {
         System.out.println(i);
 
         System.out.println("selectNum begin=====================================================");
-        int j = myService.selectNum(2);
-        System.out.println(j);
+        //int j = myService.selectNum(2);
+        //System.out.println(j);
 
         System.out.println("other no aop begin=====================================================");
         //int k = myService.other(3);
