@@ -65,6 +65,13 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframew
         <!--<property name="requestContextAttribute" value="rc"/> &lt;!&ndash;      request属性引用名称&ndash;&gt;-->
     </bean>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean class="info.gaofei.springMVC.interceptors.DefaultInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <!--异常处理-->
     <bean class="info.gaofei.springMVC.exceptionHandler.DefaultExceptionHandler"/>
 </beans>
