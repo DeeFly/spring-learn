@@ -24,7 +24,7 @@ public class MyService  implements net.xuele.debugAop.service.Service{
             logger.error("throwable :{},:{}",throwable.getMessage(), throwable.getStackTrace());
         }
 
-        selectNum(2);
+        ((MyService)AopContext.currentProxy()).selectNum(2);
 
         return 1;
     }
